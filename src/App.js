@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import First from "./components/First/First";
+import Second from "./components/Second/Second";
+import Fourth from "./components/Fourth/Fourth";
+import Third from "./components/Third/Third";
+import { useState } from "react";
+import StepWrapper from "./components/StepWrapper";
 
 function App() {
+  const [step, setStep] = useState(1);
+  const updateStep = (nextStep)=>{
+    setStep(nextStep);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+    <StepWrapper currentStep={step}/>
+    {
+      step==1 &&  <First currentStep={step} updateStep={updateStep}/>
+      
+    }
+    {
+      step==2 &&   <Second currentStep={step} updateStep={updateStep}/>
+      
+    }
+    {
+      step==3 &&  <Third currentStep={step} updateStep={updateStep}/>
+      
+    }
+    {
+      step==4 &&  <Fourth/>
+      
+    }
+     
+     
+      
+      
     </div>
   );
 }
